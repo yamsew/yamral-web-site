@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Yamral | Student Website</title>
+.photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 18px 7%;
+      background: rgba(5, 25, 50, 0.97);
+    }
+
+    .logo {
+      color: #ffd43b;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .links a:hover {
+      color: #ffd43b;
+    }
+
+    nav button {
+      border: none;
+      background: #ffd43b;
+      color: #111;
+      padding: 9px 15px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 100vh;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 60px;
+      padding: 120px 30px 60px;
+
+      text-align: center;
+      color: white;
+
+      background: linear-gradient(135deg, #063970, #087f5b);
+    }
+
+    .hero-text {
+      max-width: 750px;
+    }
+
+    .hero-text p:first-child {
+      color: #ffd43b;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      margin: 20px 0;
+    }
+
+    .hero h1 span {
+      color: #ffd43b;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-top: 15px;
+    }
+
+    .photo-box {
+      width: 230px;
+      height: 230px;
+
+      border-radius: 50%;
+      border: 6px solid #ffd43b;
+
+      background: linear-gradient(135deg, #087f5b, #063970);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 13px 28px;
+
+      background: #ffd43b;
+      color: #111;
+
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #063970;
+      font-size: 35px;
+      margin-bottom: 25px;
+    }
+
+    .section p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .dark {
+      background: #102a43;
+      color: white;
+    }
+
+    .dark h2 {
+      color: #ffd43b;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      color: #222;
+
+      width: 300px;
+      padding: 35px;
+
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      color: #087f5b;
+      margin-bottom: 15px;
+    }
+
+    #contact {
+      background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+    }
+
+    .contact-box {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .contact-box p {
+      background: white;
+      color: #063970;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+      font-weight: bold;
+    }
+
+    footer {
+      background: #061b2e;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 800px) {
+      .links {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .photo-box {
+        width: 190px;
+        height: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">YAMRAL</div>
+
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <button onclick="changeLanguage()">አማ / EN</button>
+  </nav>
+
+
+  <section id="home" class="hero">
+
+    <div class="photo-box">
+      YOUR PHOTO
+    </div>
+
+    <div class="hero-text">
+
+      <p id="welcome">እንኳን ወደ ድህረ ገጼ በደህና መጡ</p>
+
+      <h1 id="title">
+        እኔ <span>ያምራል</span> ነኝ
+      </h1>
+
+      <h2 id="student">
+        የ2ኛ ዓመት ተማሪ
+      </h2>
+
+      <p id="department">Marketing</p>
+
+      <p id="university">
+        እንጅባራ ዩኒቨርሲቲ
+      </p>
+
+      <a href="#about" class="btn" id="button">
+        ስለ እኔ ይወቁ
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <section id="about" class="section">
+
+    <h2 id="aboutTitle">ስለ እኔ</h2>
+
+    <p id="aboutText">
+      እኔ ያምራል ነኝ።
+      በእንጅባራ ዩኒቨርሲቲ የ2ኛ ዓመት
+      Marketing ተማሪ ነኝ።
+      እውቀቴን እና ክህሎቴን ለማሳደግ
+      በትምህርቴ ላይ እየሠራሁ ነው።
+    </p>
+
+  </section>
+
+
+  <section id="education" class="section dark">
+
+    <h2 id="educationTitle">ትምህርቴ</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>2ኛ ዓመት</h3>
+        <p>የ2ኛ ዓመት Marketing ተማሪ።</p>
+      </div>
+
+      <div class="card">
+        <h3>እንጅባራ ዩኒቨርሲቲ</h3>
+        <p>Injibara University</p>
+      </div>
+
+      <div class="card">
+        <h3>Department</h3>
+        <p>Marketing</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="skills" class="section">
+
+    <h2>My Skills | ክህሎቶቼ</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Marketing</h3>
+        <p>የMarketing መሠረታዊ እውቀት</p>
+      </div>
+
+      <div class="card">
+        <h3>Communication</h3>
+        <p>ጥሩ የመግባባት ክህሎት</p>
+      </div>
+
+      <div class="card">
+        <h3>Computer</h3>
+        <p>የኮምፒዩተር እና Internet እውቀት</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="projects" class="section dark">
+
+    <h2>My Projects | ፕሮጀክቶቼ</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Student Website</h3>
+        <p>
+          ይህን Website በመጠቀም
+          የWeb Design ችሎታዬን
+          እያዳበርኩ ነው።
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Marketing Project</h3>
+        <p>
+          የMarketing ትምህርት ላይ
+          የምሠራው የተማሪ Project።
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="contact" class="section">
+
+    <h2 id="contactTitle">እኔን ያግኙ</h2>
+
+    <div class="contact-box">
+
+      <p>📧 yamsew5@gmail.com</p>
+      <p>📱 0943216563</p>
+      <p>🎓 Marketing - Injibara University</p>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 Yamral | Student Website
+  </footer>
+
+
+  <script>
+    let isEnglish = false;
+
+    function changeLanguage() {
+
+      isEnglish = !isEnglish;
+
+      if (isEnglish) {
+
+        document.getElementById("welcome").innerText =
+          "WELCOME TO MY WEBSITE";
+
+        document.getElementById("title").innerHTML =
+          'I am <span>Yamral</span>';
+
+        document.getElementById("student").innerText =
+          "2nd Year Student";
+
+        document.getElementById("university").innerText =
+          "Injibara University";
+
+        document.getElementById("button").innerText =
+          "Learn About Me";
+
+        document.getElementById("aboutTitle").innerText =
+          "About Me";
+
+        document.getElementById("aboutText").innerText =
+          "My name is Yamral. I am a 2nd year Marketing student at Injibara University. I am working hard to improve my knowledge and skills.";
+
+        document.getElementById("educationTitle").innerText =
+          "My Education";
+
+        document.getElementById("contactTitle").innerText =
+          "Contact Me";
+
+      } else {
+
+        document.getElementById("welcome").innerText =
+          "እንኳን ወደ ድህረ ገጼ በደህና መጡ";
+
+        document.getElementById("title").innerHTML =
+          'እኔ <span>ያምራል</span> ነኝ';
+
+        document.getElementById("student").innerText =
+          "የ2ኛ ዓመት ተማሪ";
+
+        document.getElementById("university").innerText =
+          "እንጅባራ ዩኒቨርሲቲ";
+
+        document.getElementById("button").innerText =
+          "ስለ እኔ ይወቁ";
+
+        document.getElementById("aboutTitle").innerText =
+          "ስለ እኔ";
+
+        document.getElementById("aboutText").innerText =
+          "እኔ ያምራል ነኝ። በእንጅባራ ዩኒቨርሲቲ የ2ኛ ዓመት Marketing ተማሪ ነኝ። እውቀቴን እና ክህሎቴን ለማሳደግ በትምህርቴ ላይ እየሠራሁ ነው።";
+
+        document.getElementById("educationTitle").innerText =
+          "ትምህርቴ";
+
+        document.getElementById("contactTitle").innerText =
+          "እኔን ያግኙ";
+      }
+    }
+  </script>
+
+</body>
+</html>
