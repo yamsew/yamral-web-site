@@ -1,485 +1,537 @@
+
 <!DOCTYPE html>
 <html lang="am">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07152e">
+<meta name="description" content="Yamral Mihretu - Personal Portfolio Website">
+<title>Yamral Mihretu | Personal Portfolio</title>
 
-  <title>Yamral | Student Website</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #07152e;
+  --card: #102441;
+  --gold: #f7c948;
+  --blue: #55b8ff;
+  --white: #f8fafc;
+  --muted: #b5c4d8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+  background: #f5f7fc;
+  color: #17243a;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  background: rgba(7,21,46,.96);
+  backdrop-filter: blur(15px);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.links {
+  display: flex;
+  gap: 23px;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.links a:hover { color: var(--gold); }
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-actions button {
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  background: var(--gold);
+}
+
+.menu-btn { display: none; }
+
+.hero {
+  min-height: 100vh;
+  padding: 130px 8% 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 75px;
+  background:
+    radial-gradient(circle at 80% 20%, #164d76 0, transparent 35%),
+    linear-gradient(135deg,#07152e,#0c3456,#075b55);
+  color: white;
+}
+
+.hero-text { max-width: 650px; }
+
+.eyebrow {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(40px,6vw,70px);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero h1 span { color: var(--gold); }
+
+.hero h2 {
+  font-size: 26px;
+  color: var(--blue);
+}
+
+.hero p.description {
+  color: #d2deed;
+  line-height: 1.9;
+  margin-top: 20px;
+  font-size: 17px;
+}
+
+.photo-box {
+  width: 280px;
+  height: 280px;
+  min-width: 280px;
+  border-radius: 50%;
+  border: 7px solid var(--gold);
+  overflow: hidden;
+  background: linear-gradient(135deg,#155e75,#12345c);
+  box-shadow: 0 0 50px #55b8ff55;
+}
+
 .photo-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
 }
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    html {
-      scroll-behavior: smooth;
-    }
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 28px;
+  border-radius: 9px;
+  background: var(--gold);
+  color: #111;
+  text-decoration: none;
+  font-weight: 800;
+  transition: .3s;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #222;
-    }
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px #0003;
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
+.section {
+  padding: 100px 8%;
+  text-align: center;
+}
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+.section h2 {
+  font-size: 36px;
+  color: #0c3157;
+  margin-bottom: 20px;
+}
 
-      padding: 18px 7%;
-      background: rgba(5, 25, 50, 0.97);
-    }
+.section-intro {
+  max-width: 750px;
+  margin: 0 auto;
+  line-height: 1.9;
+  color: #64748b;
+}
 
-    .logo {
-      color: #ffd43b;
-      font-size: 25px;
-      font-weight: bold;
-    }
+.dark {
+  background: var(--bg);
+  color: white;
+}
 
-    .links a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-    }
+.dark h2 { color: var(--gold); }
 
-    .links a:hover {
-      color: #ffd43b;
-    }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 25px;
+  margin-top: 45px;
+}
 
-    nav button {
-      border: none;
-      background: #ffd43b;
-      color: #111;
-      padding: 9px 15px;
-      border-radius: 7px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.card {
+  padding: 35px 25px;
+  border-radius: 17px;
+  background: white;
+  color: #17243a;
+  box-shadow: 0 10px 35px #10244112;
+  transition: .3s;
+  border: 1px solid #e8edf5;
+}
 
-    .hero {
-      min-height: 100vh;
+.card:hover {
+  transform: translateY(-9px);
+  box-shadow: 0 18px 35px #10244120;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.dark .card {
+  background: var(--card);
+  color: white;
+  border: 1px solid #294360;
+}
 
-      gap: 60px;
-      padding: 120px 30px 60px;
+.card .emoji {
+  font-size: 38px;
+  margin-bottom: 18px;
+}
 
-      text-align: center;
-      color: white;
+.card h3 {
+  color: #087e87;
+  margin-bottom: 15px;
+}
 
-      background: linear-gradient(135deg, #063970, #087f5b);
-    }
+.dark .card h3 { color: var(--gold); }
 
-    .hero-text {
-      max-width: 750px;
-    }
+.card p {
+  line-height: 1.8;
+  color: #64748b;
+}
 
-    .hero-text p:first-child {
-      color: #ffd43b;
-      letter-spacing: 3px;
-      font-weight: bold;
-    }
+.dark .card p { color: var(--muted); }
 
-    .hero h1 {
-      font-size: 60px;
-      margin: 20px 0;
-    }
+.skill {
+  text-align: left;
+}
 
-    .hero h1 span {
-      color: #ffd43b;
-    }
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
 
-    .hero h2 {
-      font-size: 30px;
-    }
+.bar {
+  height: 9px;
+  background: #e5eaf1;
+  border-radius: 20px;
+  overflow: hidden;
+}
 
-    .hero p {
-      font-size: 20px;
-      margin-top: 15px;
-    }
+.bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg,#087e87,#55b8ff);
+  border-radius: 20px;
+}
 
-    .photo-box {
-      width: 230px;
-      height: 230px;
+#contact {
+  background: linear-gradient(135deg,#eaf4ff,#f5f7fc);
+}
 
-      border-radius: 50%;
-      border: 6px solid #ffd43b;
+.contact-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 35px;
+}
 
-      background: linear-gradient(135deg, #087f5b, #063970);
+.contact-box a {
+  padding: 18px 23px;
+  background: white;
+  color: #12345c;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px #0000000d;
+  transition: .3s;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.contact-box a:hover { transform: translateY(-5px); }
 
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
+footer {
+  padding: 30px;
+  background: #061225;
+  color: #d2deed;
+  text-align: center;
+}
 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
+@media(max-width:850px) {
+  nav { padding: 15px 5%; }
 
-    .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 13px 28px;
+  .menu-btn { display: block; }
 
-      background: #ffd43b;
-      color: #111;
+  .links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #07152e;
+    padding: 25px;
+    flex-direction: column;
+    text-align: center;
+  }
 
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+  .links.active { display: flex; }
 
-    .section {
-      padding: 100px 8%;
-      text-align: center;
-    }
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 35px;
+  }
 
-    .section h2 {
-      color: #063970;
-      font-size: 35px;
-      margin-bottom: 25px;
-    }
+  .photo-box {
+    width: 210px;
+    height: 210px;
+    min-width: 210px;
+  }
 
-    .section p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
-    .dark {
-      background: #102a43;
-      color: white;
-    }
-
-    .dark h2 {
-      color: #ffd43b;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .card {
-      background: white;
-      color: #222;
-
-      width: 300px;
-      padding: 35px;
-
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    }
-
-    .card h3 {
-      color: #087f5b;
-      margin-bottom: 15px;
-    }
-
-    #contact {
-      background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
-    }
-
-    .contact-box {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .contact-box p {
-      background: white;
-      color: #063970;
-      padding: 15px 25px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-      font-weight: bold;
-    }
-
-    footer {
-      background: #061b2e;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-
-    @media (max-width: 800px) {
-      .links {
-        display: none;
-      }
-
-      .hero {
-        flex-direction: column;
-        gap: 30px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .photo-box {
-        width: 190px;
-        height: 190px;
-      }
-    }
-  </style>
+  .section { padding: 75px 6%; }
+}
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <div class="logo">YAMRAL</div>
+<nav>
+  <div class="logo">YAMRAL.</div>
 
-    <div class="links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+  <div class="links" id="navLinks">
+    <a href="#home" data-am="መነሻ" data-en="Home">መነሻ</a>
+    <a href="#about" data-am="ስለ እኔ" data-en="About">ስለ እኔ</a>
+    <a href="#education" data-am="ትምህርት" data-en="Education">ትምህርት</a>
+    <a href="#skills" data-am="ክህሎቶች" data-en="Skills">ክህሎቶች</a>
+    <a href="#projects" data-am="ፕሮጀክቶች" data-en="Projects">ፕሮጀክቶች</a>
+    <a href="#contact" data-am="አግኙኝ" data-en="Contact">አግኙኝ</a>
+  </div>
+
+  <div class="nav-actions">
+    <button onclick="changeLanguage()" id="langBtn">EN</button>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+
+  <div class="photo-box">
+    <!-- የራስህን ፎቶ public/images/profile.jpg ብለህ አስቀምጥ -->
+    <img src="/images/profile.jpg" alt="Yamral Mihretu"
+    onerror="this.style.display='none'">
+  </div>
+
+  <div class="hero-text">
+    <div class="eyebrow" id="welcome">
+      WELCOME TO MY PORTFOLIO
     </div>
 
-    <button onclick="changeLanguage()">አማ / EN</button>
-  </nav>
+    <h1 id="title">I AM <span>YAMRAL</span></h1>
 
+    <h2 id="student">Marketing Student</h2>
 
-  <section id="home" class="hero">
-
-    <div class="photo-box">
-      YOUR PHOTO
-    </div>
-
-    <div class="hero-text">
-
-      <p id="welcome">እንኳን ወደ ድህረ ገጼ በደህና መጡ</p>
-
-      <h1 id="title">
-        እኔ <span>ያምራል</span> ነኝ
-      </h1>
-
-      <h2 id="student">
-        የ2ኛ ዓመት ተማሪ
-      </h2>
-
-      <p id="department">Marketing</p>
-
-      <p id="university">
-        እንጅባራ ዩኒቨርሲቲ
-      </p>
-
-      <a href="#about" class="btn" id="button">
-        ስለ እኔ ይወቁ
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <section id="about" class="section">
-
-    <h2 id="aboutTitle">ስለ እኔ</h2>
-
-    <p id="aboutText">
-      እኔ ያምራል ነኝ።
-      በእንጅባራ ዩኒቨርሲቲ የ2ኛ ዓመት
-      Marketing ተማሪ ነኝ።
-      እውቀቴን እና ክህሎቴን ለማሳደግ
-      በትምህርቴ ላይ እየሠራሁ ነው።
+    <p class="description" id="heroDesc">
+      A motivated student at Injibara University,
+      passionate about learning, creativity and personal growth.
     </p>
 
-  </section>
+    <a href="#about" class="btn" id="heroBtn">Discover More →</a>
+  </div>
+</section>
 
+<section class="section" id="about">
+  <h2 id="aboutTitle">About Me</h2>
+  <p class="section-intro" id="aboutText">
+    My name is Yamral Mihretu. I am a second-year Marketing
+    student at Injibara University. I am passionate about
+    learning new skills, communication, creativity and
+    developing myself for a successful future.
+  </p>
+</section>
 
-  <section id="education" class="section dark">
-
-    <h2 id="educationTitle">ትምህርቴ</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>2ኛ ዓመት</h3>
-        <p>የ2ኛ ዓመት Marketing ተማሪ።</p>
-      </div>
-
-      <div class="card">
-        <h3>እንጅባራ ዩኒቨርሲቲ</h3>
-        <p>Injibara University</p>
-      </div>
-
-      <div class="card">
-        <h3>Department</h3>
-        <p>Marketing</p>
-      </div>
-
+<section class="section dark" id="education">
+  <h2 id="educationTitle">My Education</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🎓</div>
+      <h3>University</h3>
+      <p>Injibara University</p>
     </div>
-
-  </section>
-
-
-  <section id="skills" class="section">
-
-    <h2>My Skills | ክህሎቶቼ</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>Marketing</h3>
-        <p>የMarketing መሠረታዊ እውቀት</p>
-      </div>
-
-      <div class="card">
-        <h3>Communication</h3>
-        <p>ጥሩ የመግባባት ክህሎት</p>
-      </div>
-
-      <div class="card">
-        <h3>Computer</h3>
-        <p>የኮምፒዩተር እና Internet እውቀት</p>
-      </div>
-
+    <div class="card">
+      <div class="emoji">📚</div>
+      <h3>Academic Year</h3>
+      <p>Second Year Student</p>
     </div>
-
-  </section>
-
-
-  <section id="projects" class="section dark">
-
-    <h2>My Projects | ፕሮጀክቶቼ</h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>Student Website</h3>
-        <p>
-          ይህን Website በመጠቀም
-          የWeb Design ችሎታዬን
-          እያዳበርኩ ነው።
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Marketing Project</h3>
-        <p>
-          የMarketing ትምህርት ላይ
-          የምሠራው የተማሪ Project።
-        </p>
-      </div>
-
+    <div class="card">
+      <div class="emoji">📖</div>
+      <h3>Department</h3>
+      <p>Marketing</p>
     </div>
+  </div>
+</section>
 
-  </section>
-
-
-  <section id="contact" class="section">
-
-    <h2 id="contactTitle">እኔን ያግኙ</h2>
-
-    <div class="contact-box">
-
-      <p>📧 yamsew5@gmail.com</p>
-      <p>📱 0943216563</p>
-      <p>🎓 Marketing - Injibara University</p>
-
+<section class="section" id="skills">
+  <h2 id="skillsTitle">My Skills</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">📊</div>
+      <h3>Marketing</h3>
+      <p>Marketing fundamentals and business knowledge.</p>
     </div>
+    <div class="card">
+      <div class="emoji">💬</div>
+      <h3>Communication</h3>
+      <p>Communication and teamwork skills.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">💻</div>
+      <h3>Computer Skills</h3>
+      <p>Basic computer and internet knowledge.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">🌱</div>
+      <h3>Personal Growth</h3>
+      <p>Continuous learning and self-development.</p>
+    </div>
+  </div>
+</section>
 
-  </section>
+<section class="section dark" id="projects">
+  <h2 id="projectsTitle">My Projects</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="emoji">🌐</div>
+      <h3>Personal Website</h3>
+      <p>A personal portfolio website built with HTML, CSS and JavaScript.</p>
+    </div>
+    <div class="card">
+      <div class="emoji">📈</div>
+      <h3>Marketing Projects</h3>
+      <p>Academic projects and practical marketing learning activities.</p>
+    </div>
+  </div>
+</section>
 
+<section class="section" id="contact">
+  <h2 id="contactTitle">Contact Me</h2>
+  <p class="section-intro" id="contactDesc">
+    Feel free to contact me. I would be happy to connect with you.
+  </p>
 
-  <footer>
-    © 2026 Yamral | Student Website
-  </footer>
+  <div class="contact-box">
+    <a href="mailto:yamsew5@gmail.com">📧 Email Me</a>
+    <a href="tel:+251943216563">📱 Call Me</a>
+    <a href="#home">🎓 Injibara University</a>
+  </div>
+</section>
 
+<footer>
+  © <span id="year"></span> Yamral Mihretu. All Rights Reserved.
+</footer>
 
-  <script>
-    let isEnglish = false;
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
-    function changeLanguage() {
+let isEnglish = true;
 
-      isEnglish = !isEnglish;
+const translations = {
+  am: {
+    welcome: "እንኳን ወደ የግል ድረገጼ በደህና መጡ",
+    title: 'እኔ <span>ያምራል</span> ነኝ',
+    student: "የሁለተኛ ዓመት የMarketing ተማሪ",
+    heroDesc: "በእንጅባራ ዩኒቨርሲቲ የምማር፣ አዳዲስ ነገሮችን ለመማርና ክህሎቴን ለማሳደግ የምጥር ተማሪ ነኝ።",
+    heroBtn: "ስለ እኔ ይወቁ →",
+    aboutTitle: "ስለ እኔ",
+    aboutText: "ስሜ ያምራል ምህረቱ ይባላል። በእንጅባራ ዩኒቨርሲቲ የሁለተኛ ዓመት Marketing ተማሪ ነኝ። አዳዲስ እውቀቶችን ለመማር፣ የመግባባት ችሎታዬን ለማሳደግና ለወደፊት ስኬት ራሴን ለማዘጋጀት እጥራለሁ።",
+    educationTitle: "ትምህርቴ",
+    skillsTitle: "ክህሎቶቼ",
+    projectsTitle: "ፕሮጀክቶቼ",
+    contactTitle: "እኔን ያግኙ",
+    contactDesc: "ከእኔ ጋር ለመገናኘት እባክዎ ያነጋግሩኝ።"
+  },
+  en: {
+    welcome: "WELCOME TO MY PORTFOLIO",
+    title: 'I AM <span>YAMRAL</span>',
+    student: "Marketing Student",
+    heroDesc: "A motivated student at Injibara University, passionate about learning, creativity and personal growth.",
+    heroBtn: "Discover More →",
+    aboutTitle: "About Me",
+    aboutText: "My name is Yamral Mihretu. I am a second-year Marketing student at Injibara University. I am passionate about learning new skills, communication, creativity and developing myself for a successful future.",
+    educationTitle: "My Education",
+    skillsTitle: "My Skills",
+    projectsTitle: "My Projects",
+    contactTitle: "Contact Me",
+    contactDesc: "Feel free to contact me. I would be happy to connect with you."
+  }
+};
 
-      if (isEnglish) {
+function changeLanguage() {
+  isEnglish = !isEnglish;
+  const lang = isEnglish ? "en" : "am";
+  const t = translations[lang];
 
-        document.getElementById("welcome").innerText =
-          "WELCOME TO MY WEBSITE";
-
-        document.getElementById("title").innerHTML =
-          'I am <span>Yamral</span>';
-
-        document.getElementById("student").innerText =
-          "2nd Year Student";
-
-        document.getElementById("university").innerText =
-          "Injibara University";
-
-        document.getElementById("button").innerText =
-          "Learn About Me";
-
-        document.getElementById("aboutTitle").innerText =
-          "About Me";
-
-        document.getElementById("aboutText").innerText =
-          "My name is Yamral. I am a 2nd year Marketing student at Injibara University. I am working hard to improve my knowledge and skills.";
-
-        document.getElementById("educationTitle").innerText =
-          "My Education";
-
-        document.getElementById("contactTitle").innerText =
-          "Contact Me";
-
+  Object.keys(t).forEach(id => {
+    const element = document.getElementById(id);
+    if (element) {
+      if (id === "title") {
+        element.innerHTML = t[id];
       } else {
-
-        document.getElementById("welcome").innerText =
-          "እንኳን ወደ ድህረ ገጼ በደህና መጡ";
-
-        document.getElementById("title").innerHTML =
-          'እኔ <span>ያምራል</span> ነኝ';
-
-        document.getElementById("student").innerText =
-          "የ2ኛ ዓመት ተማሪ";
-
-        document.getElementById("university").innerText =
-          "እንጅባራ ዩኒቨርሲቲ";
-
-        document.getElementById("button").innerText =
-          "ስለ እኔ ይወቁ";
-
-        document.getElementById("aboutTitle").innerText =
-          "ስለ እኔ";
-
-        document.getElementById("aboutText").innerText =
-          "እኔ ያምራል ነኝ። በእንጅባራ ዩኒቨርሲቲ የ2ኛ ዓመት Marketing ተማሪ ነኝ። እውቀቴን እና ክህሎቴን ለማሳደግ በትምህርቴ ላይ እየሠራሁ ነው።";
-
-        document.getElementById("educationTitle").innerText =
-          "ትምህርቴ";
-
-        document.getElementById("contactTitle").innerText =
-          "እኔን ያግኙ";
+        element.textContent = t[id];
       }
     }
-  </script>
+  });
+
+  document.querySelectorAll("[data-am]").forEach(link => {
+    link.textContent = link.dataset[lang];
+  });
+
+  document.getElementById("langBtn").textContent =
+    isEnglish ? "አማ" : "EN";
+
+  document.documentElement.lang = lang;
+}
+
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+document.querySelectorAll(".links a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navLinks").classList.remove("active");
+  });
+});
+</script>
 
 </body>
 </html>
